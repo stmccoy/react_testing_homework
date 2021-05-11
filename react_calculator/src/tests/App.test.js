@@ -28,5 +28,49 @@ describe('Calculator', () => {
     expect(runningTotal).toHaveTextContent('5');
     
   });
+
+  it('should be able to subtract 4 from 7', () =>{
+    const button4 = container.getByTestId('number4');
+    const button7 = container.getByTestId('number7');
+    const buttonSubtract = container.getByTestId('subtract');
+    const buttonEqual = container.getByTestId('equals');
+    const runningTotal = container.getByTestId('running-total');
+    fireEvent.click(button7);
+    fireEvent.click(buttonSubtract);
+    fireEvent.click(button4);
+    fireEvent.click(buttonEqual);
+    expect(runningTotal).toHaveTextContent('3');
+    
+  });
+
+  it('should be able to multiply 3 by 5', () =>{
+    const button3 = container.getByTestId('number3');
+    const button5 = container.getByTestId('number5');
+    const buttonMultiply = container.getByTestId('multiply');
+    const buttonEqual = container.getByTestId('equals');
+    const runningTotal = container.getByTestId('running-total');
+    fireEvent.click(button3);
+    fireEvent.click(buttonMultiply);
+    fireEvent.click(button5);
+    fireEvent.click(buttonEqual);
+    expect(runningTotal).toHaveTextContent('15');
+    
+  });
+
+  it('should be able to divide 21 by 7', () =>{
+    const button2 = container.getByTestId('number2');
+    const button1 = container.getByTestId('number1');
+    const button7 = container.getByTestId('number7');
+    const buttonDivide = container.getByTestId('divide');
+    const buttonEqual = container.getByTestId('equals');
+    const runningTotal = container.getByTestId('running-total');
+    fireEvent.click(button2);
+    fireEvent.click(button1);
+    fireEvent.click(buttonDivide);
+    fireEvent.click(button7);
+    fireEvent.click(buttonEqual);
+    expect(runningTotal).toHaveTextContent('3');
+    
+  });
 })
 
