@@ -84,5 +84,56 @@ describe('Calculator', () => {
     expect(runningTotal).toHaveTextContent('217');
     
   });
+
+  it('should be able to chain multiple operations together', () =>{
+    const button2 = container.getByTestId('number2');
+    const button1 = container.getByTestId('number1');
+    const button7 = container.getByTestId('number7');
+    const buttonDivide = container.getByTestId('divide');
+    const buttonMultiply = container.getByTestId('multiply');
+    const buttonSubtract = container.getByTestId('subtract');
+    const buttonAdd = container.getByTestId('add');
+    const buttonEqual = container.getByTestId('equals');
+    const runningTotal = container.getByTestId('running-total');
+    fireEvent.click(button2);
+    fireEvent.click(buttonDivide);
+    fireEvent.click(button1);
+    fireEvent.click(buttonEqual);
+    fireEvent.click(buttonMultiply);
+    fireEvent.click(button2);
+    fireEvent.click(buttonEqual);
+    fireEvent.click(buttonAdd);
+    fireEvent.click(button7);
+    fireEvent.click(buttonEqual);
+    fireEvent.click(buttonSubtract);
+    fireEvent.click(button1);
+    fireEvent.click(buttonEqual);
+    expect(runningTotal).toHaveTextContent('10');
+    
+  });
+
+  it('should be able to clear the running total without affecting the calculation', () =>{
+    const button2 = container.getByTestId('number2');
+    const button1 = container.getByTestId('number1');
+    const button7 = container.getByTestId('number7');
+    const buttonDivide = container.getByTestId('divide');
+    const buttonMultiply = container.getByTestId('multiply');
+    const buttonSubtract = container.getByTestId('subtract');
+    const buttonAdd = container.getByTestId('add');
+    const buttonEqual = container.getByTestId('equals');
+    const buttonClear = container.getByTestId('clear');
+    const runningTotal = container.getByTestId('running-total');
+    fireEvent.click(button2);
+    fireEvent.click(buttonAdd);
+    fireEvent.click(button7);
+    fireEvent.click(buttonEqual);
+    fireEvent.click(buttonSubtract);
+    fireEvent.click(button7);
+    fireEvent.click(buttonClear);
+    fireEvent.click(button1);
+    fireEvent.click(buttonEqual);
+    expect(runningTotal).toHaveTextContent('8');
+    
+  });
 })
 
