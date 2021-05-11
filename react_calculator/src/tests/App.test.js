@@ -72,5 +72,17 @@ describe('Calculator', () => {
     expect(runningTotal).toHaveTextContent('3');
     
   });
+
+  it('should be able to concatenate multiple number button clicks', () =>{
+    const button2 = container.getByTestId('number2');
+    const button1 = container.getByTestId('number1');
+    const button7 = container.getByTestId('number7');
+    const runningTotal = container.getByTestId('running-total');
+    fireEvent.click(button2);
+    fireEvent.click(button1);
+    fireEvent.click(button7);
+    expect(runningTotal).toHaveTextContent('217');
+    
+  });
 })
 
